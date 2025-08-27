@@ -1,0 +1,56 @@
+@font-face {
+  font-family: "Super Bread";
+  src: url("./assets/SuperBread-ywdRV.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Minimal component layer migrated into Tailwind approach */
+@layer components {
+  .card {
+    @apply rounded-lg p-4 shadow-lg border;
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.02),
+      rgba(255, 255, 255, 0.01)
+    );
+    border-color: rgba(16, 24, 40, 0.04);
+  }
+
+  .btn-primary {
+    @apply inline-block font-semibold text-white rounded-md px-4 py-2 bg-primary;
+  }
+}
+
+/* Utility font helper kept */
+.font-superbread {
+  font-family: "Super Bread", Poppins, system-ui, Avenir, Helvetica, Arial,
+    sans-serif;
+}
+
+.font-superbread-soft {
+  font-family: "Super Bread", Poppins, system-ui, Avenir, Helvetica, Arial,
+    sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: none;
+}
+
+/* Subtle text shadow utility for improved legibility over gradients */
+@layer utilities {
+  .text-subtle-shadow {
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.02),
+      0 2px 6px rgba(16, 24, 40, 0.04);
+  }
+}
+
+/* Apply the subtle shadow to body text globally */
+body {
+  @apply text-subtle-shadow;
+  @apply min-h-screen bg-gradient-to-br from-primary-700 to-primary text-subtle-shadow;
+}

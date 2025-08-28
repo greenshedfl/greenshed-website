@@ -49,37 +49,38 @@ export default function NeonOpenSign({ showHours = true }) {
   const [isOpen] = useState(() => computeIsOpenNow());
 
   return (
-    <div className="flex flex-col items-center space-y-2">
-      {/* OPEN/CLOSED sign centered */}
+    // allow the parent to control height; ensure content scales inside
+    <div className="flex flex-col items-center space-y-2 w-full max-h-full">
+      {/* OPEN/CLOSED sign centered - slightly reduced padding for fitting */}
       <div
         className={`px-6 py-2 rounded-lg bg-black/80 ${
           isOpen
-            ? "border-2 border-emerald-400 shadow-[0_0_12px_#22c55e]"
+            ? "border-2 border-pink-400 shadow-[0_0_10px_#ff49b7]"
             : "border-2 border-red-500 shadow-[0_0_10px_rgba(239,68,68,0.7)]"
         }`}
       >
         <span
           className={`font-bold tracking-widest ${
             isOpen
-              ? "text-2xl text-emerald-400 animate-pulse drop-shadow-[0_0_8px_#22c55e]"
-              : "text-xl text-red-400 drop-shadow-[0_0_6px_rgba(239,68,68,0.7)]"
+              ? "text-2xl md:text-3xl text-pink-400 animate-pulse drop-shadow-[0_0_6px_#ff49b7]"
+              : "text-xl md:text-2xl text-red-400 drop-shadow-[0_0_5px_rgba(239,68,68,0.7)]"
           }`}
         >
           {isOpen ? "OPEN" : "CLOSED"}
         </span>
       </div>
 
-      {/* Hours container */}
+      {/* Hours container - no forced h-full so it fits the parent wrapper height */}
       {showHours && (
-        <div className="bg-black/80 text-emerald-400 border border-emerald-400 rounded-lg shadow-[0_0_12px_#22c55e] px-4 py-2 w-52">
-          <ul className="space-y-0.5 text-sm">
+        <div className="bg-black/80 text-emerald-400 border border-emerald-400 rounded-lg shadow-[0_0_10px_#22c55e] px-4 py-3 w-full max-h-full flex items-center">
+          <ul className="w-full flex flex-col justify-around text-sm md:text-base leading-relaxed">
             {hours.map((entry, idx) => (
               <li
                 key={idx}
-                className="flex justify-between drop-shadow-[0_0_6px_#22c55e]"
+                className="flex justify-between items-center py-1 drop-shadow-[0_0_6px_#22c55e]"
               >
-                <span>{entry.day}</span>
-                <span>{entry.time}</span>
+                <span className="font-medium">{entry.day}</span>
+                <span className="font-medium">{entry.time}</span>
               </li>
             ))}
           </ul>

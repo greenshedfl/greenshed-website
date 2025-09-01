@@ -6,7 +6,6 @@ import { FaHandshake, FaHeart, FaSmile, FaCookie, FaTint, FaLeaf } from 'react-i
 function About({ className = '' }) {
   const aboutBadges = [
     'Black Owned Business',
-    'LGBTQ+ Friendly',
     'Friendly Staff',
     'Delta Edibles',
     'Resin',

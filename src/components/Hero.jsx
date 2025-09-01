@@ -76,7 +76,7 @@ function Hero() {
             </div>
 
             {/* Instagram / Yelp / Call CTAs under the logo, inline mode */}
-            <div className="mt-6 md:mt-8 z-10 w-full flex flex-col sm:flex-row sm:flex-wrap sm:justify-center gap-3 sm:gap-4 md:gap-5 items-center px-1 sm:px-0">
+            <div className="mt-6 md:mt-8 z-10 w-full flex flex-col sm:flex-row sm:justify-center gap-3 sm:gap-4 md:gap-6 items-center">
               <InstagramCTA inline />
               <YelpCTA inline />
               <CallCTA inline phone="+18632297347" />

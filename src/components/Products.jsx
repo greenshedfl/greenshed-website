@@ -1,233 +1,80 @@
-import React, { useEffect, useRef, useState } from "react";
-import { FiChevronLeft, FiChevronRight, FiPause, FiPlay } from "react-icons/fi";
-import glasspipe from "../assets/glasspipe.jpg";
-import grinder from "../assets/grinder.jpg";
-import rollingpapers from "../assets/rollingpapers.jpg";
+import React from 'react';
+import fume_extra from '../assets/fume_extra.webp';
+import fume_ultra from '../assets/fume_ultra.webp';
+import geekbar_pulse from '../assets/geekbar_pulse.png';
+import geekbar_pulse_x from '../assets/geekbar_pulse_x.jpg';
+import grabba_leaf from '../assets/grabba_leaf.jpg';
+import lost_mary_off_stamp from '../assets/lost_mary_off_stamp.webp';
+import olit_hookah_vape from '../assets/olit_hookah_vape.jpg';
+import pink_pussycat_honey from '../assets/pink_pussycat_honey.jpg';
+import raz_9000 from '../assets/raz_9000.jpg';
+import raz_ltz from '../assets/raz_ltz.webp';
+import thc_slushies from '../assets/thc_slushies.jpg';
+import vip_honey from '../assets/vip_honey.webp';
 
-// expanded placeholder product data (repeat images to simulate many items)
-const products = Array.from({ length: 14 }).map((_, i) => {
-  const images = [glasspipe, grinder, rollingpapers];
-  return {
-    id: i + 1,
-    name: `Product ${i + 1}`,
-    image: images[i % images.length],
-    description: "Placeholder description for this featured item.",
-    price: `$${(9 + (i % 7) * 5).toFixed(2)}`,
-  };
-});
+const products = [
+  { id: 1, name: 'Fume Extra', image: fume_extra },
+  { id: 2, name: 'Fume Ultra', image: fume_ultra },
+  { id: 3, name: 'Geekbar Pulse', image: geekbar_pulse },
+  { id: 4, name: 'Geekbar Pulse X', image: geekbar_pulse_x },
+  { id: 5, name: 'Grabba Leaf', image: grabba_leaf },
+  { id: 6, name: 'Lost Mary Off Stamp', image: lost_mary_off_stamp },
+  { id: 7, name: 'Olit Hookah Vape', image: olit_hookah_vape },
+  { id: 8, name: 'Pink Pussycat Honey', image: pink_pussycat_honey },
+  { id: 9, name: 'Raz 9000', image: raz_9000 },
+  { id: 10, name: 'Raz LTZ', image: raz_ltz },
+  { id: 11, name: 'THC Slushies', image: thc_slushies },
+  { id: 12, name: 'VIP Honey', image: vip_honey },
+];
 
-function ProductCard({ product, ariaHidden = false }) {
+function ProductCard({ product }) {
   return (
     <article
-      key={product.id}
-      className="w-64 flex-shrink-0 bg-card rounded-2xl p-4 flex flex-col items-center shadow-lg"
-      aria-hidden={ariaHidden}
-      aria-label={!ariaHidden ? product.name : undefined}
+      className="w-full bg-card rounded-2xl p-3 sm:p-4 flex flex-col items-center shadow-lg hover:shadow-2xl transition-all duration-200 hover:-translate-y-1"
+      aria-label={product.name}
     >
-      <img
-        src={product.image}
-        alt={product.name}
-        className="w-40 h-40 object-cover rounded-xl mb-3 border-2 border-white/10"
-      />
-      <h3 className="text-lg font-semibold text-body text-center">
+      <div className="w-full aspect-square rounded-xl mb-3 bg-white flex items-center justify-center overflow-hidden">
+        <img
+          src={product.image}
+          alt={product.name}
+          className="w-full h-full object-cover"
+          draggable={false}
+        />
+      </div>
+      <h3 className="text-base sm:text-lg font-medium text-body text-center mt-1">
         {product.name}
       </h3>
-      <span className="text-sm text-body/80 mt-1">{product.description}</span>
-      <span className="mt-3 text-body font-extrabold text-lg">
-        {product.price}
-      </span>
     </article>
   );
 }
 
 export default function Products() {
-  const viewportRef = useRef(null);
-  const trackRef = useRef(null);
-  const rafRef = useRef(null);
-  const resumeTimerRef = useRef(null);
-
-  const [isPaused, setIsPaused] = useState(false);
-  const [userInteracted, setUserInteracted] = useState(false);
-  const [speedPxPerSec, setSpeedPxPerSec] = useState(0);
-
-  const DURATION = 45;
-  const MIN_SPEED = 4;
-
-  // calculate speed & normalize scroll
-  const recompute = () => {
-    const track = trackRef.current;
-    const viewport = viewportRef.current;
-    if (!track || !viewport) return;
-
-    const half = track.scrollWidth / 2 || 0;
-    const rawSpeed = half / DURATION;
-    setSpeedPxPerSec(Math.max(rawSpeed, MIN_SPEED));
-
-    if (viewport.scrollLeft >= half) viewport.scrollLeft -= half;
-    if (viewport.scrollLeft < 0) viewport.scrollLeft += half;
-  };
-
-  // auto-scroll loop
-  useEffect(() => {
-    let last = performance.now();
-
-    const tick = (now) => {
-      const viewport = viewportRef.current;
-      const track = trackRef.current;
-      if (!viewport || !track) {
-        last = now;
-        rafRef.current = requestAnimationFrame(tick);
-        return;
-      }
-
-      const half = track.scrollWidth / 2;
-      const paused = isPaused || userInteracted;
-      const deltaMs = now - last;
-      last = now;
-
-      if (!paused && speedPxPerSec > 0) {
-        const deltaPx = (speedPxPerSec * deltaMs) / 1000;
-        viewport.scrollLeft += deltaPx;
-        if (viewport.scrollLeft >= half) viewport.scrollLeft -= half;
-      }
-
-      rafRef.current = requestAnimationFrame(tick);
-    };
-
-    recompute();
-    const t1 = setTimeout(recompute, 80);
-    const t2 = setTimeout(recompute, 400);
-
-    rafRef.current = requestAnimationFrame(tick);
-    window.addEventListener("resize", recompute);
-    window.addEventListener("load", recompute);
-
-    return () => {
-      if (rafRef.current) cancelAnimationFrame(rafRef.current);
-      window.removeEventListener("resize", recompute);
-      window.removeEventListener("load", recompute);
-      clearTimeout(t1);
-      clearTimeout(t2);
-    };
-  }, [isPaused, userInteracted, speedPxPerSec]);
-
-  // ensure recompute after layout
-  useEffect(() => {
-    recompute();
-    const t = setTimeout(recompute, 200);
-    return () => clearTimeout(t);
-  }, []);
-
-  // measure step between cards
-  const getItemStep = () => {
-    const track = trackRef.current;
-    if (!track) return 0;
-    const [first, second] = track.children;
-    if (!first) return 0;
-    return second ? second.offsetLeft - first.offsetLeft : first.offsetWidth;
-  };
-
-  // pause auto-scroll for 5s on manual action
-  const onUserAction = () => {
-    setUserInteracted(true);
-    if (resumeTimerRef.current) clearTimeout(resumeTimerRef.current);
-    resumeTimerRef.current = setTimeout(() => {
-      setUserInteracted(false);
-      resumeTimerRef.current = null;
-    }, 5000);
-  };
-
-  const moveStep = (forward = true) => {
-    const viewport = viewportRef.current;
-    const track = trackRef.current;
-    if (!viewport || !track) return;
-
-    const step = getItemStep() || viewport.clientWidth * 0.25;
-    const distance = step * (forward ? 1 : -1);
-
-    onUserAction();
-    viewport.scrollBy({ left: distance, behavior: "smooth" });
-
-    const speed = Math.max(speedPxPerSec, MIN_SPEED);
-    const rawMs = Math.abs((distance / speed) * 1000);
-    const approxMs = Math.max(220, Math.min(rawMs, 1200));
-
-    setTimeout(() => {
-      const half = track.scrollWidth / 2;
-      if (viewport.scrollLeft >= half) viewport.scrollLeft -= half;
-      else if (viewport.scrollLeft < 0) viewport.scrollLeft += half;
-    }, approxMs + 50);
-  };
-
   return (
     <section className="py-12 w-full">
       <style>{`
-        .marquee-mask {
-          -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%);
-          mask-image: linear-gradient(90deg, transparent 0%, black 8%, black 92%, transparent 100%);
-        }
+        .products-grid img { -webkit-user-drag: none; user-drag: none; }
       `}</style>
 
       <div className="max-w-6xl mx-auto px-6 mb-10">
-        <h2 className="text-2xl md:text-3xl font-bold text-body mb-6 text-center">
-          Featured Products
+        <h2 className="text-2xl md:text-3xl font-bold text-body mb-8 text-center">
+          Some of Our Popular Products
         </h2>
 
-        {/* conveyor viewport */}
-        <div className="relative overflow-hidden marquee-mask">
-          <div ref={viewportRef} className="w-full overflow-hidden">
-            <div ref={trackRef} className="flex gap-6 will-change-transform">
-              {/* two passes for infinite loop */}
-              {products.concat(products).map((p, i) => (
-                <ProductCard
-                  key={`${i < products.length ? "a" : "b"}-${p.id}`}
-                  product={p}
-                  ariaHidden={i >= products.length}
-                />
-              ))}
-            </div>
-          </div>
+        {/* Responsive, auto-balancing grid */}
+        <div className="products-grid grid gap-3 sm:gap-4 md:gap-5 [grid-template-columns:repeat(auto-fill,minmax(140px,1fr))] md:[grid-template-columns:repeat(auto-fill,minmax(170px,1fr))]">
+          {products.map(p => (
+            <ProductCard key={p.id} product={p} />
+          ))}
         </div>
 
-        {/* controls */}
-        <div className="mt-6 flex items-center justify-center gap-4">
-          <button
-            type="button"
-            aria-label="Rewind one product"
-            className="inline-flex items-center justify-center p-3 rounded-full bg-white/8 text-white hover:bg-white/12 transition transform hover:-translate-y-0.5 shadow-sm"
-            onClick={() => moveStep(false)}
-          >
-            <FiChevronLeft />
-          </button>
-
-          <button
-            type="button"
-            aria-label={isPaused ? "Play conveyor" : "Pause conveyor"}
-            className="inline-flex items-center justify-center p-3 rounded-full bg-white/8 text-white hover:bg-white/12 transition transform hover:-translate-y-0.5 shadow-sm"
-            onClick={() => {
-              if (isPaused) {
-                setIsPaused(false);
-                setUserInteracted(false);
-                if (resumeTimerRef.current) {
-                  clearTimeout(resumeTimerRef.current);
-                  resumeTimerRef.current = null;
-                }
-              } else {
-                setIsPaused(true);
-              }
-            }}
-          >
-            {isPaused ? <FiPlay /> : <FiPause />}
-          </button>
-
-          <button
-            type="button"
-            aria-label="Forward one product"
-            className="inline-flex items-center justify-center p-3 rounded-full bg-white/8 text-white hover:bg-white/12 transition transform hover:-translate-y-0.5 shadow-sm"
-            onClick={() => moveStep(true)}
-          >
-            <FiChevronRight />
-          </button>
+        <div className="mt-12 mx-auto max-w-3xl">
+          <p className="text-center text-base md:text-lg text-body bg-card border border-transparent rounded-xl px-6 py-4 shadow-lg">
+            <span className="font-semibold">Don't see something you're looking for?</span>
+            <span className="block mt-2">
+              We have hundreds more products in store — call or stop in to check our supply. If we
+              don't have what you're looking for, we will do our best to find it for you.
+            </span>
+          </p>
         </div>
       </div>
     </section>

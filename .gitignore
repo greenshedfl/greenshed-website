@@ -1,4 +1,13 @@
-# Logs
+node_modules/
+dist/
+.cache/
+.env
+/.pnp
+.pnp.js
+*.log
+/.vite
+.DS_Store
+coverage/# Logs
 logs
 *.log
 npm-debug.log*

@@ -1,6 +1,6 @@
 /* Subtle repeating leaf SVG background pattern */
 .leaf-bg {
-  background-image: url("./assets/leaf.svg");
+  background-image: url('./assets/leaf.svg');
   background-repeat: repeat;
   background-size: 80px 80px;
   opacity: 0.07;

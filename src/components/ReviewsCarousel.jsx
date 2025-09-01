@@ -1,28 +1,24 @@
-import React, { useEffect, useRef, useState } from "react";
-import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
-import { FaStar } from "react-icons/fa";
+import React, { useEffect, useRef, useState } from 'react';
+import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
+import { FaStar } from 'react-icons/fa';
 
-export default function ReviewsCarousel({
-  testimonials = null,
-  fullWidth = false,
-}) {
+export default function ReviewsCarousel({ testimonials = null, fullWidth = false }) {
   const defaultTestimonials = [
     {
-      text: "Chill spot...the owners are great people, great attitudes and the fact that they are open late is a winner. 420 all day",
-      author: "— Venus, Google Review",
+      text: 'Chill spot...the owners are great people, great attitudes and the fact that they are open late is a winner. 420 all day',
+      author: '— Venus, Google Review',
     },
     {
-      text: "Great new spot for all your smoking needs! New products CBD, Deltas, and so much more! Family owned and operated make this place a real community gem! Highly recommend!!!!",
-      author: "— Kristi, Google Review",
+      text: 'Great new spot for all your smoking needs! New products CBD, Deltas, and so much more! Family owned and operated make this place a real community gem! Highly recommend!!!!',
+      author: '— Kristi, Google Review',
     },
     {
-      text: "I come here quite often with my fiance and the staff is super friendly and personable. Prices are fair and the products are great.",
-      author: "— Nicolas, Store Review",
+      text: 'I come here quite often with my fiance and the staff is super friendly and personable. Prices are fair and the products are great.',
+      author: '— Nicolas, Store Review',
     },
   ];
 
-  const items =
-    testimonials && testimonials.length ? testimonials : defaultTestimonials;
+  const items = testimonials && testimonials.length ? testimonials : defaultTestimonials;
 
   const [index, setIndex] = useState(0);
   const [prevIndex, setPrevIndex] = useState(null); // used for crossfade
@@ -46,21 +42,10 @@ export default function ReviewsCarousel({
 
   if (!items.length) return null;
 
-  // animate to new index with crossfade
-  const changeTo = (newIndex) => {
-    setPrevIndex((prev) => {
-      // ensure prevIndex holds the current shown index
-      return index;
-    });
-    // update index
-    setIndex(() => newIndex);
-    // clear prev after animation
-    setTimeout(() => setPrevIndex(null), ANIM_DUR + 20);
-  };
-
-  const prev = () => {
+  // animate to new index with crossfade (goPrev used by the left control)
+  const goPrev = () => {
     setPrevIndex(index);
-    setIndex((i) => {
+    setIndex(i => {
       const nextI = (i - 1 + items.length) % items.length;
       setTimeout(() => setPrevIndex(null), ANIM_DUR + 20);
       return nextI;
@@ -69,14 +54,14 @@ export default function ReviewsCarousel({
 
   const next = () => {
     setPrevIndex(index);
-    setIndex((i) => {
+    setIndex(i => {
       const nextI = (i + 1) % items.length;
       setTimeout(() => setPrevIndex(null), ANIM_DUR + 20);
       return nextI;
     });
   };
 
-  const goTo = (i) => {
+  const goTo = i => {
     if (i === index) return;
     setPrevIndex(index);
     setIndex(i);
@@ -84,7 +69,7 @@ export default function ReviewsCarousel({
   };
 
   return (
-    <div className={fullWidth ? "w-full" : "w-full max-w-4xl mx-auto"}>
+    <div className={fullWidth ? 'w-full' : 'w-full max-w-4xl mx-auto'}>
       {/* small local keyframes for a smooth, professional ease */}
       <style>{`
         @keyframes rsFadeIn {
@@ -98,12 +83,12 @@ export default function ReviewsCarousel({
       `}</style>
 
       <div
-        className="bg-card rounded-xl p-6 text-body shadow-md relative overflow-hidden"
+        className="bg-card rounded-xl p-6 sm:p-7 md:p-9 text-body shadow-md relative overflow-hidden"
         onMouseEnter={() => setIsPaused(true)}
         onMouseLeave={() => setIsPaused(false)}
       >
         {/* fixed-height area keeps layout stable */}
-        <div className="relative h-[160px] md:h-[220px] flex items-center justify-center">
+        <div className="relative min-h-[210px] md:h-[260px] flex items-center justify-center">
           {/* Previous item (fades out) */}
           {prevIndex !== null && items[prevIndex] && (
             <div
@@ -112,25 +97,18 @@ export default function ReviewsCarousel({
               style={{
                 animation: `rsFadeOut ${ANIM_DUR}ms cubic-bezier(.22,1,.36,1) both`,
                 zIndex: 10,
-                pointerEvents: "none",
-                willChange: "opacity, transform",
+                pointerEvents: 'none',
+                willChange: 'opacity, transform',
               }}
             >
               <div className="max-w-full">
-                <p className="text-sm md:text-lg leading-relaxed">
-                  {items[prevIndex].text}
-                </p>
+                <p className="text-[15px] md:text-lg leading-relaxed">{items[prevIndex].text}</p>
                 <div className="mt-3 flex items-center gap-1 justify-center">
-                  {[0, 1, 2, 3, 4].map((i) => (
-                    <FaStar
-                      key={i}
-                      className="text-amber-400 w-3 h-3 md:w-4 md:h-4"
-                    />
+                  {[0, 1, 2, 3, 4].map(i => (
+                    <FaStar key={i} className="text-amber-400 w-3 h-3 md:w-4 md:h-4" />
                   ))}
                 </div>
-                <span className="mt-2 text-sm text-body/80 block">
-                  {items[prevIndex].author}
-                </span>
+                <span className="mt-2 text-sm text-body/80 block">{items[prevIndex].author}</span>
               </div>
             </div>
           )}
@@ -143,46 +121,39 @@ export default function ReviewsCarousel({
             style={{
               animation: `rsFadeIn ${ANIM_DUR}ms cubic-bezier(.22,1,.36,1) both`,
               zIndex: 15,
-              pointerEvents: "none", // make the animated panel non-interactive so controls remain clickable
-              willChange: "opacity, transform",
+              pointerEvents: 'none', // make the animated panel non-interactive so controls remain clickable
+              willChange: 'opacity, transform',
             }}
           >
             <div className="max-w-full">
-              <p className="text-sm md:text-lg leading-relaxed">
-                {items[index].text}
-              </p>
+              <p className="text-[15px] md:text-lg leading-relaxed">{items[index].text}</p>
               <div className="mt-3 flex items-center gap-1 justify-center">
-                {[0, 1, 2, 3, 4].map((i) => (
-                  <FaStar
-                    key={i}
-                    className="text-amber-400 w-3 h-3 md:w-4 md:h-4"
-                  />
+                {[0, 1, 2, 3, 4].map(i => (
+                  <FaStar key={i} className="text-amber-400 w-3 h-3 md:w-4 md:h-4" />
                 ))}
               </div>
-              <span className="mt-2 text-sm text-body/80 block">
-                {items[index].author}
-              </span>
+              <span className="mt-2 text-sm text-body/80 block">{items[index].author}</span>
             </div>
           </div>
         </div>
 
         {/* Arrows */}
-        <div className="absolute top-1/2 -translate-y-1/2 left-4 sm:left-6 md:left-8 flex items-center z-40">
+        <div className="absolute top-1/2 -translate-y-1/2 left-2 sm:left-4 md:left-8 flex items-center z-40">
           <button
             aria-label="Previous review"
-            onClick={prev}
+            onClick={goPrev}
             className="p-3 rounded-full bg-primary/20 hover:bg-primary/30 transition"
-            style={{ pointerEvents: "auto" }}
+            style={{ pointerEvents: 'auto' }}
           >
             <FiChevronLeft />
           </button>
         </div>
-        <div className="absolute top-1/2 -translate-y-1/2 right-4 sm:right-6 md:right-8 flex items-center z-40">
+        <div className="absolute top-1/2 -translate-y-1/2 right-2 sm:right-4 md:right-8 flex items-center z-40">
           <button
             aria-label="Next review"
             onClick={next}
             className="p-3 rounded-full bg-primary/20 hover:bg-primary/30 transition"
-            style={{ pointerEvents: "auto" }}
+            style={{ pointerEvents: 'auto' }}
           >
             <FiChevronRight />
           </button>
@@ -196,7 +167,7 @@ export default function ReviewsCarousel({
               aria-label={`Show testimonial ${i + 1}`}
               onClick={() => goTo(i)}
               className={`w-3 h-3 rounded-full transition ${
-                i === index ? "bg-title-primary" : "bg-neutral/40"
+                i === index ? 'bg-title-primary' : 'bg-neutral/40'
               }`}
             />
           ))}

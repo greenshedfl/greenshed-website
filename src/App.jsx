@@ -1,20 +1,24 @@
-import React from "react";
-import Header from "./components/Header";
-import Hero from "./components/Hero";
-import About from "./components/About";
-import Products from "./components/Products";
-import Promotions from "./components/Promotions";
-import Footer from "./components/Footer";
+import React from 'react';
+import Header from './components/Header';
+import Hero from './components/Hero';
+import About from './components/About';
+import Products from './components/Products';
+import Gallery from './components/Gallery';
+import ShopLocation from './components/ShopLocation';
+import AgeGate from './components/AgeGate';
+import Footer from './components/Footer';
 
 function App() {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-[100dvh] md:min-h-screen flex flex-col">
       <Header />
       <main className="flex-1">
+        <AgeGate />
         <Hero />
         <About />
         <Products />
-        <Promotions />
+        <Gallery />
+        <ShopLocation />
       </main>
       <Footer />
     </div>

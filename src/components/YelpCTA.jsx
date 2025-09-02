@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaYelp } from 'react-icons/fa';
 
-export default function YelpCTA({ handle = 'greenshedsmokeshop' }) {
+export default function YelpCTA({ handle = 'greenshed-smokeshop-winter-haven' }) {
   return (
     <a
       href={`https://yelp.com/biz/${handle}`}

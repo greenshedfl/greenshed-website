@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaInstagram } from 'react-icons/fa';
 
-export default function InstagramCTA({ handle = 'greenshed.smokeshop' }) {
+export default function InstagramCTA({ handle = 'greenshedsmokeshop' }) {
   return (
     <a
       href={`https://instagram.com/${handle}`}

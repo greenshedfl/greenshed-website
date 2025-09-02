@@ -10,7 +10,7 @@ import Footer from './components/Footer';
 
 function App() {
   return (
-    <div className="min-h-[100dvh] md:min-h-screen flex flex-col">
+    <div id="top" className="min-h-[100dvh] md:min-h-screen flex flex-col">
       <Header />
       <main className="flex-1">
         <AgeGate />

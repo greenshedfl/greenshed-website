@@ -41,7 +41,7 @@ function ProductCard({ product }) {
           draggable={false}
         />
       </div>
-      <h3 className="text-base sm:text-lg font-medium text-body text-center mt-1">
+      <h3 className="text-sm sm:text-base md:text-lg font-medium text-body text-center mt-1 px-2 whitespace-nowrap truncate leading-tight min-h-[1.75rem] md:min-h-[2rem]">
         {product.name}
       </h3>
     </article>
@@ -60,8 +60,8 @@ export default function Products() {
           Some of Our Popular Products
         </h2>
 
-        {/* Responsive, auto-balancing grid */}
-        <div className="products-grid grid gap-3 sm:gap-4 md:gap-5 [grid-template-columns:repeat(auto-fill,minmax(140px,1fr))] md:[grid-template-columns:repeat(auto-fill,minmax(170px,1fr))]">
+        {/* Responsive grid with fixed column counts for even rows */}
+        <div className="products-grid grid gap-3 sm:gap-4 md:gap-5 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-4">
           {products.map(p => (
             <ProductCard key={p.id} product={p} />
           ))}

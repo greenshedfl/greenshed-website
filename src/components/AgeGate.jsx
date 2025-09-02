@@ -44,9 +44,10 @@ export default function AgeGate() {
       role="dialog"
       aria-modal="true"
       aria-label="Age verification"
-      className={`fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-lg px-4 transition-all duration-300 overflow-hidden overscroll-none ${
+      className={`fixed inset-0 z-[9999] flex items-center justify-center bg-black/95 backdrop-blur-lg px-4 transition-all duration-300 overflow-hidden overscroll-none h-screen w-screen min-h-[100vh] ${
         closing ? 'opacity-0 scale-95' : 'opacity-100'
       }`}
+      style={{ height: '100dvh' }}
     >
       <div
         className={`w-full mx-auto bg-card rounded-xl p-6 shadow-2xl text-center transform transition-all duration-500 max-w-[92vw] sm:max-w-lg ${

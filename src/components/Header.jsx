@@ -4,15 +4,39 @@ import leaf from '../assets/leaf.svg';
 function Header() {
   const handleHomeClick = e => {
     e.preventDefault();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    e.stopPropagation();
+    const topEl = document.getElementById('top');
+    if (topEl && typeof topEl.scrollIntoView === 'function') {
+      try {
+        topEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } catch {
+        topEl.scrollIntoView(true);
+      }
+    } else {
+      try {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } catch {
+        window.scrollTo(0, 0);
+      }
+      // Fallback for very old/quirky browsers
+      if (location.hash !== '#top') {
+        location.hash = '#top';
+      }
+    }
   };
 
   return (
     <header className="bg-header w-full sticky top-0 z-50 relative flex items-center justify-center px-6 py-4 shadow-sm border-b">
       <button
+        type="button"
         onClick={handleHomeClick}
+        onKeyDown={e => {
+          if (e.key === 'Enter' || e.key === ' ') handleHomeClick(e);
+        }}
         aria-label="Go to top"
-        className="absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 focus:outline-none text-title-primary bg-transparent p-0"
+        title="Back to top"
+        className="absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 z-10 focus:outline-none text-title-primary bg-transparent p-0 cursor-pointer"
+        style={{ touchAction: 'manipulation' }}
       >
         <img
           src={leaf}

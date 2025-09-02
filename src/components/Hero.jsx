@@ -4,6 +4,7 @@ import dougPortrait from '../assets/doug.png';
 import InstagramCTA from './InstagramCTA';
 import YelpCTA from './YelpCTA';
 import CallCTA from './CallCTA';
+import TikTokCTA from './TikTokCTA';
 import heroBackground from '../assets/background image.jpg';
 
 function Hero() {
@@ -33,31 +34,26 @@ function Hero() {
     return () => window.removeEventListener('keydown', onKey);
   }, [showDoug]);
 
-  // Hide Doug when the CSS animation completes so removal matches the visual fade
   function onDougAnimationEnd() {
     setShowDoug(false);
   }
 
   return (
     <section className="relative w-full py-16 overflow-visible">
-      {/* Full-size background (slightly blurred) */}
+      {/* Background */}
       <div
         className="absolute inset-0 w-full h-full bg-center bg-cover filter blur-sm"
         style={{ backgroundImage: `url(${heroBackground})` }}
       />
-      {/* Full-section tint (keeps background visible through tint) */}
       <div className="absolute inset-0 bg-black/60 pointer-events-none z-0" />
 
       <div className="max-w-6xl mx-auto px-6 relative z-10">
-        {/* Hero container: stacked on mobile, side-by-side on md+ */}
         <div className="relative rounded-2xl p-6 min-h-[420px] md:min-h-[540px] flex flex-col md:flex-row items-center justify-center gap-6 md:gap-10 lg:gap-16">
-          {/* Left column: larger logo + instagram CTA beneath */}
+          {/* Left column */}
           <div className="w-full md:w-2/5 md:min-w-0 flex flex-col items-center justify-center">
             <div className="relative flex flex-col items-center z-10 text-white transition-all duration-300 px-4 py-2 isolate">
-              {/* Neutral feather halo (no color / no green glow) */}
               <div className="absolute z-0 w-[90vw] max-w-[680px] h-[46vw] max-h-[360px] rounded-full bg-gradient-to-tr from-black/30 via-black/15 to-transparent blur-[48px] pointer-events-none" />
 
-              {/* Logo with subtle neutral feathering; no colored glow */}
               <img
                 src={greenshedLogo}
                 alt="Greenshed Logo"
@@ -75,27 +71,27 @@ function Hero() {
               />
             </div>
 
-            {/* Instagram / Yelp / Call CTAs under the logo, inline mode */}
-            <div className="mt-6 md:mt-8 z-10 w-full flex flex-col sm:flex-row sm:justify-center gap-3 sm:gap-4 md:gap-6 items-center">
+            {/* CTA buttons */}
+            <div className="mt-6 md:mt-8 z-10 w-full grid grid-cols-2 gap-2 sm:gap-3 md:gap-4">
               <InstagramCTA inline />
               <YelpCTA inline />
+              <TikTokCTA inline handle="greenshed.smokesh" />
               <CallCTA inline phone="+18632297347" />
             </div>
           </div>
 
-          {/* Right column: flavor/about blurb (narrower to compensate) */}
+          {/* Right column */}
           <div className="w-full md:w-3/5 md:min-w-0 flex flex-col items-start justify-center z-10 md:pl-2 lg:pl-6">
             <div className="max-w-2xl text-left">
               <h1 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-white leading-tight">
                 Serving Winter Haven with High Quality Legal THC Products
               </h1>
               <p className="mt-4 text-base md:text-lg text-white/90 leading-relaxed">
-                At Greenshed, we have a bit of everything. From custom bongs, resin, delta 8/9
-                edibles, THC infused slushies, and way way more. Friendly staff, reliable
-                recommendations, and a welcoming atmosphere — whether you're a longtime regular or
-                just browsing, we're here to help.
+                At Greenshed, we have a bit of everything. From custom bongs, resin, Δ 8/9 edibles,
+                THC infused slushies, and way way more. Friendly staff, reliable recommendations,
+                and a welcoming atmosphere — whether you're a longtime regular or just browsing,
+                we're here to help.
               </p>
-              {/* optional CTA or small badges could go here */}
             </div>
           </div>
         </div>

@@ -9,7 +9,7 @@ export default function ReviewsCarousel({ testimonials = null, fullWidth = false
       author: '— Venus, Google Review',
     },
     {
-      text: 'Great new spot for all your smoking needs! New products CBD, Deltas, and so much more! Family owned and operated make this place a real community gem! Highly recommend!!!!',
+      text: 'Great new spot for all your smoking needs! New products CBD, Δs, and so much more! Family owned and operated make this place a real community gem! Highly recommend!!!!',
       author: '— Kristi, Google Review',
     },
     {

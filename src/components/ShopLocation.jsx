@@ -13,19 +13,8 @@ export default function ShopLocation({ address = SHOP_ADDRESS }) {
         <h2 className="text-2xl md:text-3xl font-bold text-body mb-6 text-center">
           Visit Our Shop
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 items-stretch min-h-0">
-          <div className="w-full">
-            <div className="relative h-80 md:h-[420px] bg-card rounded-xl overflow-hidden border border-transparent shadow-lg">
-              <img
-                src={shopPhoto}
-                alt="Greenshed Smoke Shop"
-                className="w-full h-full object-cover object-center filter saturate-90 contrast-95"
-                title="Greenshed Smoke Shop"
-              />
-            </div>
-          </div>
-
-          <div className="w-full">
+        <div className="grid grid-cols-1 place-items-center gap-8 md:gap-10 min-h-0">
+          <div className="w-full max-w-3xl">
             <div className="relative h-80 md:h-[420px] rounded-xl overflow-hidden border border-transparent shadow-lg">
               <iframe
                 ref={iframeRef}

@@ -7,7 +7,7 @@ function About({ className = '' }) {
   const aboutBadges = [
     'Black Owned Business',
     'Friendly Staff',
-    'Delta Edibles',
+    'Δ Edibles',
     'Resin',
     'Rolling Papers',
   ];

@@ -4,6 +4,16 @@ import NeonOpenSign from './NeonOpenSign';
 import { FaHandshake, FaHeart, FaSmile, FaCookie, FaTint, FaLeaf } from 'react-icons/fa';
 
 function About({ className = '' }) {
+  // Pick an icon based on badge text so icon mapping stays correct if order changes
+  const getBadgeIcon = (text) => {
+    const t = String(text).toLowerCase();
+    if (t.includes('black')) return FaHandshake; // Black Owned Business
+    if (t.includes('friendly') || t.includes('staff')) return FaSmile; // Friendly Staff
+    if (t.includes('Δ') || t.includes('delta') || t.includes('edible')) return FaCookie; // Δ Edibles
+    if (t.includes('resin')) return FaTint; // Resin
+    if (t.includes('rolling') || t.includes('paper')) return FaLeaf; // Rolling Papers
+    return FaHeart; // fallback
+  };
   const aboutBadges = [
     'Black Owned Business',
     'Friendly Staff',
@@ -23,13 +33,11 @@ function About({ className = '' }) {
               className="flex-shrink-0 flex items-center gap-2 bg-primary rounded-full px-3 py-2 animate-badge-pulse max-w-[88vw]"
               style={{ animationDelay: `${i * 120}ms` }}
             >
-              {/* lightweight icon mapping by index for visual variety */}
-              {i === 0 && <FaHandshake className="text-emerald-300" />}
-              {i === 1 && <FaHeart className="text-emerald-300" />}
-              {i === 2 && <FaSmile className="text-emerald-300" />}
-              {i === 3 && <FaCookie className="text-emerald-300" />}
-              {i === 4 && <FaTint className="text-emerald-300" />}
-              {i === 5 && <FaLeaf className="text-emerald-300" />}
+              {/* icon chosen by text to avoid mismatches when badges change */}
+              {(() => {
+                const Icon = getBadgeIcon(badge);
+                return <Icon className="text-emerald-300" />;
+              })()}
 
               <span className="text-sm font-medium text-body whitespace-nowrap">{badge}</span>
             </div>

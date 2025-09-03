@@ -1,5 +1,6 @@
 import React from 'react';
-import leaf from '../assets/leaf.svg';
+import { FaPeace } from 'react-icons/fa';
+import PromoBanner from './PromoBanner';
 
 function Header() {
   const handleHomeClick = e => {
@@ -38,13 +39,11 @@ function Header() {
         className="absolute left-3 sm:left-4 top-1/2 -translate-y-1/2 z-10 focus:outline-none text-title-primary bg-transparent p-0 cursor-pointer"
         style={{ touchAction: 'manipulation' }}
       >
-        <img
-          src={leaf}
-          alt="Marijuana Leaf Icon"
+        <FaPeace
+          aria-hidden={true}
           className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 lg:w-14 lg:h-14"
           style={{
             filter: 'drop-shadow(0 1px 2px rgba(0,0,0,0.10))',
-            fill: 'currentColor',
             color: 'inherit',
           }}
         />
@@ -55,6 +54,11 @@ function Header() {
       </h1>
 
       {/* Doug easter-egg removed from header (now hidden until triggered) */}
+
+      {/* Promo banner sits just below the header; header is relative so 'absolute top-full' anchors here. */}
+      <div className="absolute left-1/2 -translate-x-1/2 top-full z-[60] pointer-events-auto">
+        <PromoBanner />
+      </div>
     </header>
   );
 }

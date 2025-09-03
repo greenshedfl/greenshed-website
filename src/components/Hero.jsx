@@ -5,6 +5,7 @@ import InstagramCTA from './InstagramCTA';
 import YelpCTA from './YelpCTA';
 import CallCTA from './CallCTA';
 import TikTokCTA from './TikTokCTA';
+import FacebookCTA from './FacebookCTA';
 import heroBackground from '../assets/background image.jpg';
 
 function Hero() {
@@ -71,11 +72,12 @@ function Hero() {
               />
             </div>
 
-            {/* CTA buttons */}
-            <div className="mt-6 md:mt-8 z-10 w-full grid grid-cols-2 gap-2 sm:gap-3 md:gap-4">
+            {/* CTA buttons: responsive auto-fit to avoid collisions and wrap nicely */}
+            <div className="mt-6 md:mt-8 z-10 w-full grid gap-2 sm:gap-3 md:gap-4 grid-cols-[repeat(auto-fit,minmax(150px,1fr))]">
               <InstagramCTA inline />
               <YelpCTA inline />
               <TikTokCTA inline handle="greenshed.smokesh" />
+              <FacebookCTA />
               <CallCTA inline phone="+18632297347" />
             </div>
           </div>

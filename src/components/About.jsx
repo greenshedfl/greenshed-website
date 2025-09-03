@@ -5,7 +5,7 @@ import { FaHandshake, FaHeart, FaSmile, FaCookie, FaTint, FaLeaf } from 'react-i
 
 function About({ className = '' }) {
   // Pick an icon based on badge text so icon mapping stays correct if order changes
-  const getBadgeIcon = (text) => {
+  const getBadgeIcon = text => {
     const t = String(text).toLowerCase();
     if (t.includes('black')) return FaHandshake; // Black Owned Business
     if (t.includes('friendly') || t.includes('staff')) return FaSmile; // Friendly Staff

@@ -41,7 +41,6 @@ function Hero() {
 
   return (
     <section className="relative w-full py-16 overflow-visible">
-      {/* Background */}
       <div
         className="absolute inset-0 w-full h-full bg-center bg-cover filter blur-sm"
         style={{ backgroundImage: `url(${heroBackground})` }}
@@ -50,7 +49,6 @@ function Hero() {
 
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         <div className="relative rounded-2xl p-6 min-h-[420px] md:min-h-[540px] flex flex-col md:flex-row items-center justify-center gap-6 md:gap-10 lg:gap-16">
-          {/* Left column */}
           <div className="w-full md:w-2/5 md:min-w-0 flex flex-col items-center justify-center">
             <div className="relative flex flex-col items-center z-10 text-white transition-all duration-300 px-4 py-2 isolate">
               <div className="absolute z-0 w-[90vw] max-w-[680px] h-[46vw] max-h-[360px] rounded-full bg-gradient-to-tr from-black/30 via-black/15 to-transparent blur-[48px] pointer-events-none" />
@@ -72,17 +70,18 @@ function Hero() {
               />
             </div>
 
-            {/* CTA buttons: responsive auto-fit to avoid collisions and wrap nicely */}
             <div className="mt-6 md:mt-8 z-10 w-full grid gap-2 sm:gap-3 md:gap-4 grid-cols-[repeat(auto-fit,minmax(150px,1fr))]">
               <InstagramCTA inline />
               <YelpCTA inline />
               <TikTokCTA inline handle="greenshed.smokesh" />
               <FacebookCTA />
-              <CallCTA inline phone="+18632297347" />
+              {/* Span full width on desktop only, keep natural flow on mobile */}
+              <div className="md:col-span-full">
+                <CallCTA inline phone="+18632297347" />
+              </div>
             </div>
           </div>
 
-          {/* Right column */}
           <div className="w-full md:w-3/5 md:min-w-0 flex flex-col items-start justify-center z-10 md:pl-2 lg:pl-6">
             <div className="max-w-2xl text-left">
               <h1 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-white leading-tight">

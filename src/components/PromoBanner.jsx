@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { FaTimes } from 'react-icons/fa';
 
-// A small promotional banner that appears just below the header and overlays the hero.
-// Uses sessionStorage to remember dismissal for the current tab session.
 function PromoBanner() {
   const [open, setOpen] = useState(true);
 
@@ -28,21 +26,22 @@ function PromoBanner() {
 
   return (
     <div
-      className="mt-2 px-4 sm:px-5 py-1 rounded-full bg-primary/95 text-header shadow-lg border border-emerald-300/30 flex items-center justify-between gap-2 sm:gap-3 w-auto max-w-[90vw] sm:max-w-[560px] md:max-w-[720px] animate-bounce-slow"
+      className="mt-3 px-3 sm:px-5 py-1 sm:py-1.5 rounded-full bg-primary/95 text-header shadow-lg border border-emerald-300/30 flex items-center gap-2 sm:gap-3 w-auto max-w-[300px] sm:max-w-[560px] md:max-w-[720px] sm:animate-bounce-slow"
       style={{ touchAction: 'manipulation' }}
       role="status"
       aria-live="polite"
+      aria-label="VIP program promotion"
     >
-      <span className="flex-1 text-center text-sm sm:text-base font-semibold tracking-wide px-1">
-        5% off every Monday
+      <span className="flex-1 text-center font-semibold leading-tight text-[11px] sm:text-sm md:text-base tracking-wide break-words">
+        Become a VIP! Call or check store for details.
       </span>
       <button
         type="button"
         aria-label="Close promotion"
         onClick={handleClose}
-        className="shrink-0 inline-flex items-center justify-center rounded-full p-1.5 text-header/80 hover:text-header focus:outline-none focus:ring-2 focus:ring-emerald-400/50"
+        className="shrink-0 inline-flex items-center justify-center rounded-full p-1 sm:p-1.5 text-header/80 hover:text-header focus:outline-none focus:ring-2 focus:ring-emerald-400/50"
       >
-        <FaTimes className="h-4 w-4" />
+        <FaTimes className="h-3 w-3 sm:h-4 sm:w-4" />
       </button>
     </div>
   );

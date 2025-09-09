@@ -55,10 +55,13 @@ export default function Products() {
         .products-grid img { -webkit-user-drag: none; user-drag: none; }
       `}</style>
 
-      <div className="max-w-6xl mx-auto px-6 mb-10">
-        <h2 className="text-2xl md:text-3xl font-bold text-body mb-8 text-center">
+      <div className="max-w-6xl mx-auto px-6 mb-10 relative">
+        <h2 className="pt-8 md:pt-6 text-2xl md:text-3xl font-bold text-body text-center">
           Some of Our Popular Products
         </h2>
+        <h3 className="mt-2 mb-8 text-lg md:text-xl font-bold text-body text-center tracking-wide">
+          Call to place order ahead of time. <span className="text-body">Ready upon pickup!</span>
+        </h3>
 
         {/* Responsive grid with fixed column counts for even rows */}
         <div className="products-grid grid gap-3 sm:gap-4 md:gap-5 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-4">

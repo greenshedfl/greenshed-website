@@ -34,7 +34,7 @@ import exoticCandy1 from '../assets/exotic_candy1.jpg';
 import exoticCandy3 from '../assets/exotic_candy3.jpg';
 import exoticSoda1 from '../assets/exotic_soda_1.webp';
 import exoticSoda2 from '../assets/exotic_soda_2.jpg';
-import kratom1 from '../assets/kartom_1.jpg'; // filename appears to have a typo 'kartom'
+import kratom1 from '../assets/kratom_1.jpg';
 import kratom2 from '../assets/kratom_2.jpg';
 import PromoBanner from './PromoBanner';
 import ProductMiniCard from './ProductMiniCard';

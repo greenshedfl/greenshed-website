@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Redirecting…</title>
+    <script>
+      (function () {
+        var l = window.location;
+        // If hosted on GitHub Pages project site, derive base from repo name
+        var isGhPages = l.hostname.endsWith('github.io');
+        var parts = l.pathname.split('/').filter(Boolean);
+        var repo = isGhPages && parts.length > 0 ? '/' + parts[0] + '/' : '/';
+        var target = repo;
+        // Preserve query and hash when possible
+        var qs = l.search || '';
+        var hash = l.hash || '';
+        l.replace(target + qs + hash);
+      })();
+    </script>
+  </head>
+  <body>
+    <noscript>
+      <p>JavaScript required. If you are not redirected, go back to the site root.</p>
+    </noscript>
+  </body>
+</html>

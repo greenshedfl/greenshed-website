@@ -4,7 +4,6 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // Logo-inspired greens with supporting neutrals and warm accent
         primary: {
           DEFAULT: '#2f6b4a',
           600: '#285c41',

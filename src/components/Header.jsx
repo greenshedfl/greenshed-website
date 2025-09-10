@@ -1,13 +1,50 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { FaPeace, FaBars, FaTimes, FaChevronDown } from 'react-icons/fa';
 import { FiPhone } from 'react-icons/fi';
+import largeBong1 from '../assets/large_bong_1.jpg';
+import largeBong2 from '../assets/large_bong_2.jpg';
+import smallBong1 from '../assets/small_bong_1.webp';
+import smallBong2 from '../assets/small_bong_2.webp';
+import dabRig1 from '../assets/dab_rig_1.webp';
+import dabRig2 from '../assets/dab_rig_2.webp';
+import siliconePipe from '../assets/silicone_pipe.webp';
+import glassPipe from '../assets/glass_pipe.jpg';
+import hookahVape from '../assets/hookah_vape.webp';
+import hookahImg from '../assets/hookah.webp';
+import glassAshtray from '../assets/glass_ashtray.webp';
+import siliconeAshtray from '../assets/silicone_ashtray.jpg';
+import mylarBagsImg from '../assets/mylar_bags.jpg';
+import wraps1 from '../assets/wraps_1.webp';
+import wraps2 from '../assets/wraps_2.webp';
+import cigarillosImg from '../assets/cigarillos.webp';
+import bluntsImg from '../assets/blunts.jpg';
+import grabba1 from '../assets/grabba_1.webp';
+import grabba2 from '../assets/grabba_2.jpg';
+import batteries1 from '../assets/batteries_1.webp';
+import vapeMods1 from '../assets/vape_mods_1.webp';
+import detox1 from '../assets/detox_1.png';
+import detox2 from '../assets/detox_2.jpg';
+import vapes1 from '../assets/vapes_1.webp';
+import vapes2 from '../assets/vapes_2.jpg';
+import eJuice1 from '../assets/e-juice_1.jpg';
+import eJuice2 from '../assets/e-juice_2.webp';
+import thc1 from '../assets/THC_1.webp';
+import thc2 from '../assets/THC_2.webp';
+import exoticCandy1 from '../assets/exotic_candy1.jpg';
+import exoticCandy3 from '../assets/exotic_candy3.jpg';
+import exoticSoda1 from '../assets/exotic_soda_1.webp';
+import exoticSoda2 from '../assets/exotic_soda_2.jpg';
+import kratom1 from '../assets/kartom_1.jpg'; // filename appears to have a typo 'kartom'
+import kratom2 from '../assets/kratom_2.jpg';
 import PromoBanner from './PromoBanner';
+import ProductMiniCard from './ProductMiniCard';
 
 function Header() {
   const [menuMounted, setMenuMounted] = useState(false);
   const [panelVisible, setPanelVisible] = useState(false);
   const [openPanels, setOpenPanels] = useState({});
   const panelRef = useRef(null);
+  const [preview, setPreview] = useState(null); // { name, img }
 
   useEffect(() => {
     if (menuMounted) {
@@ -32,6 +69,18 @@ function Header() {
   function closeMenu() {
     setPanelVisible(false);
   }
+
+  // Close image preview helper
+  const closePreview = () => setPreview(null);
+
+  useEffect(() => {
+    if (!preview) return;
+    function onKey(e) {
+      if (e.key === 'Escape') closePreview();
+    }
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [preview]);
 
   useEffect(() => {
     if (!panelVisible && menuMounted) {
@@ -161,8 +210,8 @@ function Header() {
                     items: [
                       'Mylar Bags',
                       'Wraps',
-                      'Cigarellos/Blunts',
-                      'Grubba',
+                      'Cigarillos/Blunts',
+                      'Grabba',
                       'Batteries/Mods',
                       'Detox',
                     ],
@@ -181,42 +230,79 @@ function Header() {
                 ];
 
                 const categoryProducts = {
-                  Bongs: ['Beaker Bong', 'Percolator'],
-                  'Small Bongs': ['Mini Beaker', 'Pocket Bong'],
-                  'Dab Rigs': ['Quartz Rig', 'Recycler'],
-                  'Silicone Pipes & Glass Pipes': ['Silicone Spoon', 'Glass Sherlock'],
-                  'Hookah/Hookah Accessories': ['2-Hose Hookah', 'Coal Burner'],
-                  Ashtrays: ['Glass Ashtray', 'Silicone Ashtray'],
-                  'Mylar Bags': ['3.5g Bag', 'Smell-Proof Bag'],
-                  Wraps: ['Hemp Wrap', 'Flavored Wrap'],
-                  'Cigarellos/Blunts': ['Vanilla Cigarillo', 'Leaf Wrap'],
-                  Grubba: ['Grabba Leaf', 'Leaf Splitter'],
-                  'Batteries/Mods': ['510 Battery', 'Vape Mod'],
-                  Detox: ['Detox Drink', 'Detox Capsules'],
+                  Bongs: [
+                    { name: 'Large Bong 1', img: largeBong1 },
+                    { name: 'Large Bong 2', img: largeBong2 },
+                  ],
+                  'Small Bongs': [
+                    { name: 'Small Bong 1', img: smallBong1 },
+                    { name: 'Small Bong 2', img: smallBong2 },
+                  ],
+                  'Dab Rigs': [
+                    { name: 'Dab Rig 1', img: dabRig1 },
+                    { name: 'Dab Rig 2', img: dabRig2 },
+                  ],
+                  'Silicone Pipes & Glass Pipes': [
+                    { name: 'Silicone Pipe', img: siliconePipe },
+                    { name: 'Glass Pipe', img: glassPipe },
+                  ],
+                  'Hookah/Hookah Accessories': [
+                    { name: 'Hookah Vape', img: hookahVape },
+                    { name: 'Hookah', img: hookahImg },
+                  ],
+                  Ashtrays: [
+                    { name: 'Glass Ashtray', img: glassAshtray },
+                    { name: 'Silicone Ashtray', img: siliconeAshtray },
+                  ],
+                  'Mylar Bags': [{ name: 'Mylar Bags', img: mylarBagsImg }], // reduced to one generic representative card
+                  Wraps: [
+                    { name: 'Wraps 1', img: wraps1 },
+                    { name: 'Wraps 2', img: wraps2 },
+                  ],
+                  'Cigarillos/Blunts': [
+                    { name: 'Cigarillos', img: cigarillosImg },
+                    { name: 'Blunts', img: bluntsImg },
+                  ],
+                  Grabba: [
+                    { name: 'Grabba 1', img: grabba1 },
+                    { name: 'Grabba 2', img: grabba2 },
+                  ],
+                  'Batteries/Mods': [
+                    { name: 'Battery', img: batteries1 },
+                    { name: 'Vape Mod', img: vapeMods1 },
+                  ],
+                  Detox: [
+                    { name: 'Detox 1', img: detox1 },
+                    { name: 'Detox 2', img: detox2 },
+                  ],
                   // Adult Novelties removed per spacing request
-                  Vapes: ['Geekbar Pulse', 'Fume Extra'],
-                  'E-Juices': ['Fruit Punch', 'Menthol Ice'],
-                  'THCA/THCP/Hemp Products': ['THCA Flower', 'THCP Cartridge'],
-                  'Exotic Candy': ['Japanese Candy', 'UK Chocolate'],
-                  'Exotic Soda': ['Mexican Soda', 'Asian Soda'],
-                  Kratom: ['Green Vein', 'Red Vein'],
+                  Vapes: [
+                    { name: 'Vape 1', img: vapes1 },
+                    { name: 'Vape 2', img: vapes2 },
+                  ],
+                  'E-Juices': [
+                    { name: 'E-Juice 1', img: eJuice1 },
+                    { name: 'E-Juice 2', img: eJuice2 },
+                  ],
+                  'THCA/THCP/Hemp Products': [
+                    { name: 'THC Product 1', img: thc1 },
+                    { name: 'THC Product 2', img: thc2 },
+                  ],
+                  'Exotic Candy': [
+                    { name: 'Exotic Candy 1', img: exoticCandy1 },
+                    { name: 'Exotic Candy 3', img: exoticCandy3 },
+                  ],
+                  'Exotic Soda': [
+                    { name: 'Exotic Soda 1', img: exoticSoda1 },
+                    { name: 'Exotic Soda 2', img: exoticSoda2 },
+                  ],
+                  Kratom: [
+                    { name: 'Kratom 1', img: kratom1 },
+                    { name: 'Kratom 2', img: kratom2 },
+                  ],
                 };
 
-                function ProductCardMini({ name }) {
-                  return (
-                    <div className="group rounded-xl bg-card border border-emerald-100 shadow hover:shadow-md transition-all p-2 flex flex-col items-center text-center">
-                      <div className="w-full aspect-square rounded-lg bg-white flex items-center justify-center overflow-hidden mb-2 relative">
-                        <div className="absolute inset-0 bg-gradient-to-br from-emerald-50 via-white to-emerald-100 opacity-70" />
-                        <span className="relative z-10 text-[11px] font-medium text-emerald-800 px-1 leading-tight">
-                          {name}
-                        </span>
-                      </div>
-                      <span className="text-[11px] font-semibold text-emerald-700 truncate w-full px-1 leading-tight">
-                        {name}
-                      </span>
-                    </div>
-                  );
-                }
+                // ProductMiniCard extracted to its own component (see ProductMiniCard.jsx)
 
                 return (
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
@@ -260,11 +346,26 @@ function Header() {
                                   style={{ display: 'grid' }}
                                 >
                                   <div className="min-h-0 px-3 pb-2 pt-0.5 bg-emerald-25">
-                                    <div className="mt-2 grid grid-cols-2 gap-2">
-                                      {(categoryProducts[cat] || []).slice(0, 2).map(name => (
-                                        <ProductCardMini key={name} name={name} />
-                                      ))}
-                                    </div>
+                                    {(() => {
+                                      const items = (categoryProducts[cat] || []).slice(0, 3);
+                                      return (
+                                        <div className="mt-2 grid grid-cols-[repeat(auto-fit,minmax(180px,1fr))] gap-3 md:gap-4">
+                                          {items.map(item => {
+                                            const isObj = typeof item === 'object' && item !== null;
+                                            const name = isObj ? item.name : item;
+                                            const img = isObj ? item.img : undefined;
+                                            return (
+                                              <ProductMiniCard
+                                                key={name}
+                                                name={name}
+                                                img={img}
+                                                onClick={() => img && setPreview({ name, img })}
+                                              />
+                                            );
+                                          })}
+                                        </div>
+                                      );
+                                    })()}
                                   </div>
                                 </div>
                               </li>
@@ -336,7 +437,41 @@ function Header() {
               <p className="text-emerald-800/90 font-medium tracking-wide">
                 Become a VIP! Call or check store for details.
               </p>
-              <p>&copy; {new Date().getFullYear()} Greenshed Smoke Shop</p>
+              <p>&copy; {new Date().getFullYear()} Greenshed Corp.</p>
+            </div>
+          </div>
+        </div>
+      )}
+      {preview && (
+        <div
+          className="fixed inset-0 z-[95] flex items-center justify-center p-3 sm:p-4 bg-black/70 backdrop-blur-sm animate-fade-in"
+          role="dialog"
+          aria-modal="true"
+          aria-label={preview.name}
+          onClick={closePreview}
+        >
+          <div
+            className="relative max-w-[95vw] max-h-[92vh] rounded-xl shadow-2xl border border-white/10 bg-neutral-900/90 px-3 pt-10 pb-4 flex items-center justify-center"
+            onClick={e => e.stopPropagation()}
+          >
+            <button
+              type="button"
+              aria-label="Close preview"
+              onClick={closePreview}
+              className="absolute top-2 right-2 z-10 p-2 rounded-md bg-black/60 text-white hover:bg-black/75 focus:outline-none focus:ring-2 focus:ring-emerald-400/60"
+            >
+              <FaTimes className="w-5 h-5" />
+            </button>
+            <img
+              src={preview.img}
+              alt={preview.name}
+              className="max-w-full max-h-[80vh] md:max-h-[84vh] w-auto h-auto object-contain select-none drop-shadow-xl"
+              draggable={false}
+            />
+            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent pt-10 pb-3 px-4 pointer-events-none">
+              <p className="text-xs sm:text-sm md:text-base font-medium text-white tracking-wide text-center">
+                {preview.name}
+              </p>
             </div>
           </div>
         </div>

@@ -9,9 +9,9 @@ function Footer() {
         <p className="leading-tight break-words">
           <span
             className="leading-tight whitespace-nowrap truncate max-w-full"
-            title={`\u00a9 ${new Date().getFullYear()} Greenshed Smoke Shop. All Rights Reserved.`}
+            title={`\u00a9 ${new Date().getFullYear()} Greenshed Corp. All Rights Reserved.`}
           >
-            &copy; {new Date().getFullYear()} Greenshed Smoke Shop. All Rights Reserved.
+            &copy; {new Date().getFullYear()} Greenshed Corp. All Rights Reserved.
           </span>
         </p>
         <p className="mt-1 break-words">{SHOP_ADDRESS}</p>

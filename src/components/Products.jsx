@@ -23,7 +23,7 @@ const products = [
   { id: 8, name: 'Pink Pussycat Honey', image: pink_pussycat_honey },
   { id: 9, name: 'Raz 9000', image: raz_9000 },
   { id: 10, name: 'Raz LTZ', image: raz_ltz },
-  { id: 11, name: 'THC Slushies', image: thc_slushies },
+  { id: 11, name: 'Slushies', image: thc_slushies },
   { id: 12, name: 'VIP Honey', image: vip_honey },
 ];
 

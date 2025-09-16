@@ -89,9 +89,9 @@ function Hero() {
               </h1>
               <p className="mt-4 text-base md:text-lg text-white/90 leading-relaxed">
                 At Greenshed, we have a bit of everything. From custom bongs, resin, Δ 8/9 edibles,
-                THC infused slushies, and way way more. Friendly staff, reliable recommendations,
-                and a welcoming atmosphere — whether you're a longtime regular or just browsing,
-                we're here to help.
+                slushies, and way way more. Friendly staff, reliable recommendations, and a
+                welcoming atmosphere — whether you're a longtime regular or just browsing, we're
+                here to help.
               </p>
             </div>
           </div>

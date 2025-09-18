@@ -412,7 +412,7 @@ function Header() {
                 <div className="flex flex-col gap-2">
                   <a
                     href="tel:+18632297347"
-                    aria-label="Call Greenshed Smoke Shop"
+                    aria-label="Call"
                     className="inline-flex w-fit items-center gap-1.5 rounded-md bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 text-white text-xs font-medium px-3 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-emerald-600/50 focus:ring-offset-1 focus:ring-offset-white transition-colors"
                   >
                     <FiPhone className="w-4 h-4" />

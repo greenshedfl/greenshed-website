@@ -9,7 +9,7 @@ import olit_hookah_vape from '../assets/olit_hookah_vape.jpg';
 import pink_pussycat_honey from '../assets/pink_pussycat_honey.jpg';
 import raz_9000 from '../assets/raz_9000.jpg';
 import raz_ltz from '../assets/raz_ltz.webp';
-import thc_slushies from '../assets/thc_slushies.jpg';
+import slushies from '../assets/slushies.jpg';
 import vip_honey from '../assets/vip_honey.webp';
 
 const products = [
@@ -23,7 +23,7 @@ const products = [
   { id: 8, name: 'Pink Pussycat Honey', image: pink_pussycat_honey },
   { id: 9, name: 'Raz 9000', image: raz_9000 },
   { id: 10, name: 'Raz LTZ', image: raz_ltz },
-  { id: 11, name: 'Slushies', image: thc_slushies },
+  { id: 11, name: 'Slushies', image: slushies },
   { id: 12, name: 'VIP Honey', image: vip_honey },
 ];
 

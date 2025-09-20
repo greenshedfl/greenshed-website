@@ -28,8 +28,8 @@ import vapes1 from '../assets/vapes_1.webp';
 import vapes2 from '../assets/vapes_2.jpg';
 import eJuice1 from '../assets/e-juice_1.jpg';
 import eJuice2 from '../assets/e-juice_2.webp';
-import thc1 from '../assets/THC_1.webp';
-import thc2 from '../assets/THC_2.webp';
+import flower from '../assets/flower.webp';
+import vape3 from '../assets/vape_3.webp';
 import exoticCandy1 from '../assets/exotic_candy1.jpg';
 import exoticCandy3 from '../assets/exotic_candy3.jpg';
 import exoticSoda1 from '../assets/exotic_soda_1.webp';
@@ -221,7 +221,7 @@ function Header() {
                     items: [
                       'Vapes',
                       'E-Juices',
-                      'THCA/THCP/Hemp Products',
+                      'Edible Products',
                       'Exotic Candy',
                       'Exotic Soda',
                       'Kratom',
@@ -284,9 +284,9 @@ function Header() {
                     { name: 'E-Juice 1', img: eJuice1 },
                     { name: 'E-Juice 2', img: eJuice2 },
                   ],
-                  'THCA/THCP/Hemp Products': [
-                    { name: 'THC Product 1', img: thc1 },
-                    { name: 'THC Product 2', img: thc2 },
+                  'Edible Products': [
+                    { name: 'Edible Product 1', img: flower },
+                    { name: 'Edible Product 2', img: vape3 },
                   ],
                   'Exotic Candy': [
                     { name: 'Exotic Candy 1', img: exoticCandy1 },

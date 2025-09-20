@@ -85,7 +85,7 @@ function Hero() {
           <div className="w-full md:w-3/5 md:min-w-0 flex flex-col items-start justify-center z-10 md:pl-2 lg:pl-6">
             <div className="max-w-2xl text-left">
               <h1 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-white leading-tight">
-                Serving Winter Haven with High Quality Legal THC Products
+                Serving Winter Haven with High Quality Products
               </h1>
               <p className="mt-4 text-base md:text-lg text-white/90 leading-relaxed">
                 At Greenshed, we have a bit of everything. From custom bongs, resin, Δ 8/9 edibles,

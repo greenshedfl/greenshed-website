@@ -12,7 +12,7 @@ export default function AgeGate() {
     if (!confirmed && inputRef.current) inputRef.current.focus();
   }, [confirmed]);
 
-  // lock body scrolling and restore on cleanup or when confirmed
+  // lock body scrolling
   useEffect(() => {
     if (!confirmed) {
       const prevBodyOverflow = document.body.style.overflow;
@@ -31,11 +31,9 @@ export default function AgeGate() {
     const birthDate = new Date(dateString);
     let age = today.getFullYear() - birthDate.getFullYear();
     const m = today.getMonth() - birthDate.getMonth();
-
     if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
       age--;
     }
-
     return age;
   }
 
@@ -44,13 +42,11 @@ export default function AgeGate() {
       setError('Please enter your date of birth.');
       return;
     }
-
     const age = calculateAge(birthdate);
     if (age < 21) {
       setError('You must be at least 21 years old to enter.');
       return;
     }
-
     setError('');
     setClosing(true);
     setTimeout(() => setConfirmed(true), 650);
@@ -67,46 +63,49 @@ export default function AgeGate() {
       role="dialog"
       aria-modal="true"
       aria-label="Age verification"
-      className={`fixed inset-0 z-[9999] flex items-center justify-center bg-black/95 backdrop-blur-lg px-4 transition-all duration-300 overflow-hidden overscroll-none h-screen w-screen min-h-[100vh] ${
+      className={`fixed inset-0 z-[9999] flex items-center justify-center bg-black/95 backdrop-blur-lg px-4 transition-all duration-300 h-screen w-screen ${
         closing ? 'opacity-0 scale-95' : 'opacity-100'
       }`}
-      style={{ height: '100dvh' }}
     >
       <div
-        className={`w-full mx-auto bg-card rounded-xl p-6 shadow-2xl text-center transform transition-all duration-500 max-w-[92vw] sm:max-w-lg ${
+        className={`w-full mx-auto bg-neutral-900 rounded-xl p-6 shadow-2xl text-center transition-all duration-500 max-w-sm sm:max-w-md ${
           closing ? 'scale-110 blur-sm' : 'scale-100'
         }`}
       >
-        <h2 className="text-lg font-bold text-body mb-3">Age verification</h2>
-        <p className="text-sm text-body/90 mb-6">
+        <h2 className="text-lg font-bold text-white mb-3">Age Verification</h2>
+        <p className="text-sm text-gray-300 mb-6">
           You must be 21 years or older to enter this site. Please enter your date of birth to
           continue.
         </p>
 
-        <div className="flex flex-col items-center gap-4">
+        <div className="flex flex-col items-stretch gap-4">
+          <label htmlFor="dob" className="text-left text-sm font-medium text-gray-200">
+            Date of Birth
+          </label>
           <input
             ref={inputRef}
+            id="dob"
             type="date"
             value={birthdate}
             onChange={e => setBirthdate(e.target.value)}
-            className="px-3 py-2 rounded-md border border-white/20 bg-white/10 text-white text-sm focus:outline-none focus:ring-2 focus:ring-emerald-400/30"
+            className="px-3 py-3 rounded-md border border-gray-400 bg-white text-black text-base w-full focus:outline-none focus:ring-2 focus:ring-emerald-400"
           />
 
           {error && <p className="text-red-400 text-sm">{error}</p>}
 
-          <div className="flex items-center justify-center gap-4">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mt-4">
             <button
               onClick={accept}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transform transition duration-200 ease-out bg-white/10 hover:bg-white/20 text-white border border-transparent shadow-md hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-emerald-400/30"
+              className="w-full sm:w-auto px-5 py-3 rounded-md text-sm font-medium bg-emerald-600 hover:bg-emerald-700 text-white shadow-md focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-emerald-400"
             >
               Continue
             </button>
 
             <button
               onClick={leave}
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transform transition duration-200 ease-out bg-transparent hover:bg-white/5 text-white border border-transparent shadow-sm hover:shadow-md focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-white/10"
+              className="w-full sm:w-auto px-5 py-3 rounded-md text-sm font-medium bg-gray-700 hover:bg-gray-600 text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-gray-400"
             >
-              Leave site
+              Leave Site
             </button>
           </div>
         </div>

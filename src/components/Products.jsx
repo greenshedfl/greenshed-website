@@ -1,3 +1,19 @@
+import { FaHandshake, FaHeart, FaSmile, FaTint, FaLeaf } from 'react-icons/fa';
+const productBadges = [
+  'Black Owned Business',
+  'Friendly Staff',
+  'Specialty Goods',
+  'Resin',
+  'Rolling Papers',
+];
+const getBadgeIcon = text => {
+  const t = String(text).toLowerCase();
+  if (t.includes('black')) return FaHandshake;
+  if (t.includes('friendly') || t.includes('staff')) return FaSmile;
+  if (t.includes('resin')) return FaTint;
+  if (t.includes('rolling') || t.includes('paper')) return FaLeaf;
+  return FaHeart;
+};
 import React from 'react';
 import fume_extra from '../assets/fume_extra.webp';
 import fume_ultra from '../assets/fume_ultra.webp';
@@ -59,9 +75,27 @@ export default function Products() {
         <h2 className="pt-8 md:pt-6 text-2xl md:text-3xl font-bold text-body text-center">
           Some of Our Popular Products
         </h2>
-        <h3 className="mt-2 mb-8 text-lg md:text-xl font-bold text-body text-center tracking-wide">
+
+        <h3 className="mt-2 mb-4 text-lg md:text-xl font-bold text-body text-center tracking-wide">
           Call to place order ahead of time. <span className="text-body">Ready upon pickup!</span>
         </h3>
+
+        {/* Floating badges moved here from About.jsx */}
+        <div className="mb-8 flex gap-2 sm:gap-3 md:gap-4 items-center justify-center flex-wrap overflow-x-auto overflow-y-visible py-2 -mx-4 px-4">
+          {productBadges.map((badge, i) => {
+            const Icon = getBadgeIcon(badge);
+            return (
+              <div
+                key={i}
+                className="flex-shrink-0 flex items-center gap-2 bg-primary rounded-full px-3 py-2 animate-badge-pulse max-w-[88vw]"
+                style={{ animationDelay: `${i * 120}ms` }}
+              >
+                <Icon className="text-emerald-300" />
+                <span className="text-sm font-medium text-body whitespace-nowrap">{badge}</span>
+              </div>
+            );
+          })}
+        </div>
 
         {/* Responsive grid with fixed column counts for even rows */}
         <div className="products-grid grid gap-3 sm:gap-4 md:gap-5 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-4">

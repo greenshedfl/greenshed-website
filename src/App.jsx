@@ -4,6 +4,9 @@ import Hero from './components/Hero';
 import Products from './components/Products';
 import Gallery from './components/Gallery';
 import ShopLocation from './components/ShopLocation';
+import About from './components/About';
+import PrivacyPolicy from './components/PrivacyPolicy';
+import Contact from './components/Contact';
 import AgeGate from './components/AgeGate';
 import Footer from './components/Footer';
 
@@ -14,10 +17,13 @@ function App() {
       <main className="flex-1">
         <AgeGate />
         <Hero />
-        {/* Products now replace former About section */}
+        {/* Products */}
         <Products />
         <Gallery />
         <ShopLocation />
+        <About />
+        <PrivacyPolicy />
+        <Contact />
       </main>
       <Footer />
     </div>

@@ -1,0 +1,4 @@
+Contact: mailto:gssales@greenshed.com
+Policy: https://www.greenshedfl.com/
+Preferred-Languages: en
+Canonical: https://www.greenshedfl.com/.well-known/security.txt

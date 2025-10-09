@@ -13,18 +13,18 @@ import slushies from '../assets/slushies.jpg';
 import vip_honey from '../assets/vip_honey.webp';
 
 const products = [
-  { id: 1, name: 'Fume Extra', image: fume_extra },
-  { id: 2, name: 'Fume Ultra', image: fume_ultra },
-  { id: 3, name: 'Geekbar Pulse', image: geekbar_pulse },
-  { id: 4, name: 'Geekbar Pulse X', image: geekbar_pulse_x },
-  { id: 5, name: 'Grabba Leaf', image: grabba_leaf },
-  { id: 6, name: 'Lost Mary Off Stamp', image: lost_mary_off_stamp },
-  { id: 7, name: 'Olit Hookah Vape', image: olit_hookah_vape },
-  { id: 8, name: 'Pink Pussycat Honey', image: pink_pussycat_honey },
-  { id: 9, name: 'Raz 9000', image: raz_9000 },
-  { id: 10, name: 'Raz LTZ', image: raz_ltz },
+  { id: 1, name: 'Handheld Device A', image: fume_extra },
+  { id: 2, name: 'Handheld Device B', image: fume_ultra },
+  { id: 3, name: 'Handheld Device C', image: geekbar_pulse },
+  { id: 4, name: 'Handheld Device D', image: geekbar_pulse_x },
+  { id: 5, name: 'Natural Leaf Wrap', image: grabba_leaf },
+  { id: 6, name: 'Device Accessory', image: lost_mary_off_stamp },
+  { id: 7, name: 'Hookah Device', image: olit_hookah_vape },
+  { id: 8, name: 'Specialty Honey', image: pink_pussycat_honey },
+  { id: 9, name: 'Handheld Device E', image: raz_9000 },
+  { id: 10, name: 'Handheld Device F', image: raz_ltz },
   { id: 11, name: 'Slushies', image: slushies },
-  { id: 12, name: 'VIP Honey', image: vip_honey },
+  { id: 12, name: 'Specialty Honey (VIP)', image: vip_honey },
 ];
 
 function ProductCard({ product }) {

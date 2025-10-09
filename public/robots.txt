@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
 
-# Update with your production sitemap URL if available
-# Sitemap: https://your-domain.com/sitemap.xml
+Sitemap: https://www.greenshedfl.com/sitemap.xml

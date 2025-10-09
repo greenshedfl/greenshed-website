@@ -1,7 +1,7 @@
 import React from 'react';
 import ReviewsCarousel from './ReviewsCarousel';
 import NeonOpenSign from './NeonOpenSign';
-import { FaHandshake, FaHeart, FaSmile, FaCookie, FaTint, FaLeaf } from 'react-icons/fa';
+import { FaHandshake, FaHeart, FaSmile, FaTint, FaLeaf } from 'react-icons/fa';
 
 function About({ className = '' }) {
   // Pick an icon based on badge text so icon mapping stays correct if order changes
@@ -9,7 +9,6 @@ function About({ className = '' }) {
     const t = String(text).toLowerCase();
     if (t.includes('black')) return FaHandshake; // Black Owned Business
     if (t.includes('friendly') || t.includes('staff')) return FaSmile; // Friendly Staff
-    if (t.includes('Δ') || t.includes('delta') || t.includes('edible')) return FaCookie; // Δ Edibles
     if (t.includes('resin')) return FaTint; // Resin
     if (t.includes('rolling') || t.includes('paper')) return FaLeaf; // Rolling Papers
     return FaHeart; // fallback
@@ -17,13 +16,13 @@ function About({ className = '' }) {
   const aboutBadges = [
     'Black Owned Business',
     'Friendly Staff',
-    'Δ Edibles',
+    'Specialty Goods',
     'Resin',
     'Rolling Papers',
   ];
 
   return (
-    <section className={`relative py-12 w-full flex-1 ${className}`}>
+    <section id="about" className={`relative py-12 w-full flex-1 ${className}`}>
       <div className="max-w-4xl mx-auto px-6 h-full flex flex-col items-center justify-center">
         {/* Badges - prevent wrapping, allow horizontal scroll on small screens */}
         <div className="mt-6 flex gap-2 sm:gap-3 md:gap-4 items-center justify-center flex-wrap overflow-x-auto overflow-y-visible py-2 -mx-4 px-4">

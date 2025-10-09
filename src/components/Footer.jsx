@@ -15,6 +15,15 @@ function Footer() {
           </span>
         </p>
         <p className="mt-1 break-words">{SHOP_ADDRESS}</p>
+        <p className="mt-1 text-[11px] text-primary/80">
+          For adults 21+ only. Products are intended for legal use where permitted. No online sales.
+        </p>
+        <p className="mt-1 text-[11px] text-primary/70">
+          Security:{' '}
+          <a href="/.well-known/security.txt" className="underline">
+            /.well-known/security.txt
+          </a>
+        </p>
       </div>
     </footer>
   );

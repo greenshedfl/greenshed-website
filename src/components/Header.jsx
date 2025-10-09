@@ -217,14 +217,14 @@ function Header() {
                     ],
                   },
                   {
-                    label: 'Vapes & Alt Products',
+                    label: 'Handheld Devices & Alt Goods',
                     items: [
-                      'Vapes',
-                      'E-Juices',
-                      'Edible Products',
+                      'Handheld Devices',
+                      'E-Liquids',
+                      'Specialty Goods',
                       'Exotic Candy',
                       'Exotic Soda',
-                      'Kratom',
+                      'Botanical Products',
                     ],
                   },
                 ];
@@ -276,17 +276,17 @@ function Header() {
                     { name: 'Detox 2', img: detox2 },
                   ],
                   // Adult Novelties removed per spacing request
-                  Vapes: [
+                  'Handheld Devices': [
                     { name: 'Vape 1', img: vapes1 },
                     { name: 'Vape 2', img: vapes2 },
                   ],
-                  'E-Juices': [
-                    { name: 'E-Juice 1', img: eJuice1 },
-                    { name: 'E-Juice 2', img: eJuice2 },
+                  'E-Liquids': [
+                    { name: 'E-Liquid 1', img: eJuice1 },
+                    { name: 'E-Liquid 2', img: eJuice2 },
                   ],
-                  'Edible Products': [
-                    { name: 'Edible Product 1', img: flower },
-                    { name: 'Edible Product 2', img: vape3 },
+                  'Specialty Goods': [
+                    { name: 'Specialty Item 1', img: flower },
+                    { name: 'Specialty Item 2', img: vape3 },
                   ],
                   'Exotic Candy': [
                     { name: 'Exotic Candy 1', img: exoticCandy1 },
@@ -296,9 +296,9 @@ function Header() {
                     { name: 'Exotic Soda 1', img: exoticSoda1 },
                     { name: 'Exotic Soda 2', img: exoticSoda2 },
                   ],
-                  Kratom: [
-                    { name: 'Kratom 1', img: kratom1 },
-                    { name: 'Kratom 2', img: kratom2 },
+                  'Botanical Products': [
+                    { name: 'Botanical Item 1', img: kratom1 },
+                    { name: 'Botanical Item 2', img: kratom2 },
                   ],
                 };
 
@@ -404,6 +404,38 @@ function Header() {
                     <dd className="mt-1 text-emerald-700 text-xs md:text-sm">Yes.</dd>
                   </div>
                 </dl>
+              </section>
+              <section className="mt-8 pt-6 border-t border-emerald-100/60">
+                <h3 className="text-sm font-semibold tracking-wide text-emerald-900/80 uppercase mb-4 pl-1">
+                  Site Info
+                </h3>
+                <div className="flex flex-wrap gap-2">
+                  {[
+                    { label: 'About', id: 'about' },
+                    { label: 'Privacy', id: 'privacy' },
+                    { label: 'Contact', id: 'contact' },
+                  ].map(link => (
+                    <a
+                      key={link.id}
+                      href={`#${link.id}`}
+                      onClick={e => {
+                        e.preventDefault();
+                        const el = document.getElementById(link.id);
+                        if (el && typeof el.scrollIntoView === 'function') {
+                          try {
+                            el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                          } catch {
+                            el.scrollIntoView(true);
+                          }
+                        }
+                        closeMenu();
+                      }}
+                      className="inline-flex items-center gap-1.5 rounded-md bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-medium px-3 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-emerald-600/50 focus:ring-offset-1 focus:ring-offset-white"
+                    >
+                      {link.label}
+                    </a>
+                  ))}
+                </div>
               </section>
               <div className="mt-36 mb-4 bg-emerald-50/70 border border-emerald-100 rounded-lg px-4 py-4">
                 <p className="text-[13px] md:text-sm text-emerald-800 leading-snug font-semibold mb-2">

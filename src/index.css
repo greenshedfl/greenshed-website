@@ -145,3 +145,24 @@ body {
   color: #e8ede1; /* fallback body color */
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.02), 0 2px 6px rgba(16, 24, 40, 0.04);
 }
+
+.ticker-wrapper {
+  display: flex;
+  width: max-content;
+  animation: ticker-scroll 25s linear infinite;
+  will-change: transform;
+}
+
+.ticker-content {
+  display: flex;
+  white-space: nowrap;
+}
+
+@keyframes ticker-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}

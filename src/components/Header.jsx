@@ -34,8 +34,6 @@ import exoticCandy1 from '../assets/exotic_candy1.jpg';
 import exoticCandy3 from '../assets/exotic_candy3.jpg';
 import exoticSoda1 from '../assets/exotic_soda_1.webp';
 import exoticSoda2 from '../assets/exotic_soda_2.jpg';
-import kratom1 from '../assets/kratom_1.jpg';
-import kratom2 from '../assets/kratom_2.jpg';
 import PromoBanner from './PromoBanner';
 import ProductMiniCard from './ProductMiniCard';
 
@@ -218,14 +216,7 @@ function Header() {
                   },
                   {
                     label: 'Vapes & Alt Products',
-                    items: [
-                      'Vapes',
-                      'E-Juices',
-                      'Edible Products',
-                      'Exotic Candy',
-                      'Exotic Soda',
-                      'Kratom',
-                    ],
+                    items: ['Vapes', 'E-Juices', 'Edible Products', 'Exotic Candy', 'Exotic Soda'],
                   },
                 ];
 
@@ -275,7 +266,6 @@ function Header() {
                     { name: 'Detox 1', img: detox1 },
                     { name: 'Detox 2', img: detox2 },
                   ],
-                  // Adult Novelties removed per spacing request
                   Vapes: [
                     { name: 'Vape 1', img: vapes1 },
                     { name: 'Vape 2', img: vapes2 },
@@ -296,13 +286,7 @@ function Header() {
                     { name: 'Exotic Soda 1', img: exoticSoda1 },
                     { name: 'Exotic Soda 2', img: exoticSoda2 },
                   ],
-                  Kratom: [
-                    { name: 'Kratom 1', img: kratom1 },
-                    { name: 'Kratom 2', img: kratom2 },
-                  ],
                 };
-
-                // ProductMiniCard extracted to its own component (see ProductMiniCard.jsx)
 
                 return (
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">

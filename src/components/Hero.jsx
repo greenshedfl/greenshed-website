@@ -88,8 +88,8 @@ function Hero() {
                 Serving Winter Haven with High Quality Products
               </h1>
               <p className="mt-4 text-base md:text-lg text-white/90 leading-relaxed">
-                At Greenshed, we have a bit of everything. From custom bongs, resin, Δ 8/9 edibles,
-                slushies, and way way more. Friendly staff, reliable recommendations, and a
+                At Greenshed, we have a bit of everything. From custom glass pieces, specialty
+                resins, slushies, and much more. Friendly staff, reliable recommendations, and a
                 welcoming atmosphere — whether you're a longtime regular or just browsing, we're
                 here to help.
               </p>

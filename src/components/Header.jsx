@@ -270,13 +270,13 @@ function Header() {
                     { name: 'Vape 1', img: vapes1 },
                     { name: 'Vape 2', img: vapes2 },
                   ],
-                  'E-Juices': [
-                    { name: 'E-Juice 1', img: eJuice1 },
-                    { name: 'E-Juice 2', img: eJuice2 },
+                  'E-Liquids': [
+                    { name: 'E-Liquid 1', img: eJuice1 },
+                    { name: 'E-Liquid 2', img: eJuice2 },
                   ],
-                  'Edible Products': [
-                    { name: 'Edible Product 1', img: flower },
-                    { name: 'Edible Product 2', img: vape3 },
+                  'Specialty Goods': [
+                    { name: 'Specialty Item 1', img: flower },
+                    { name: 'Specialty Item 2', img: vape3 },
                   ],
                   'Exotic Candy': [
                     { name: 'Exotic Candy 1', img: exoticCandy1 },
@@ -389,6 +389,7 @@ function Header() {
                   </div>
                 </dl>
               </section>
+              {/* Move site info and privacy under Contact Us panel below */}
               <div className="mt-36 mb-4 bg-emerald-50/70 border border-emerald-100 rounded-lg px-4 py-4">
                 <p className="text-[13px] md:text-sm text-emerald-800 leading-snug font-semibold mb-2">
                   Questions? <span className="font-normal">Contact us:</span>
@@ -413,6 +414,39 @@ function Header() {
                     <br />
                     Winter Haven, FL 33881
                   </p>
+                  <div className="mt-3 text-[11px] text-emerald-900/80 leading-snug space-y-2 border-t border-emerald-100/60 pt-3">
+                    <div>
+                      <strong>About:</strong>{' '}
+                      <a
+                        href="#about"
+                        onClick={e => {
+                          e.preventDefault();
+                          const el = document.getElementById('about');
+                          if (el && typeof el.scrollIntoView === 'function') {
+                            try {
+                              el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            } catch {
+                              el.scrollIntoView(true);
+                            }
+                          }
+                          closeMenu();
+                        }}
+                        className="underline cursor-pointer"
+                      >
+                        About Greenshed
+                      </a>
+                    </div>
+                    <div>
+                      <strong>Privacy Policy:</strong> We do not sell products online and do not
+                      collect payment or credential information on this website. No analytics or
+                      tracking pixels are used. If you contact us by phone or email, we use your
+                      info only to respond to your inquiry. For privacy questions:{' '}
+                      <a href="mailto:gssales@greenshed.com" className="underline">
+                        gssales@greenshed.com
+                      </a>
+                      .
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

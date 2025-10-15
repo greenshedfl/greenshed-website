@@ -14,7 +14,7 @@ function App() {
       <main className="flex-1">
         <AgeGate />
         <Hero />
-        {/* Products now replace former About section */}
+        {/* Products */}
         <Products />
         <Gallery />
         <ShopLocation />
